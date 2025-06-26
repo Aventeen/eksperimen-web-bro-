@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eksperimen Web Bro Elite</title>
+  <style>
+    body {
+      background: #111;
+      color: #0f0;
+      font-family: monospace;
+      text-align: center;
+      padding: 50px;
+    }
+
+    button {
+      font-size: 24px;
+      padding: 15px 30px;
+      background: #222;
+      color: #0f0;
+      border: 2px solid #0f0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .effect {
+      animation: blink 0.2s;
+    }
+
+    @keyframes blink {
+      from { background-color: #0f0; color: #111; }
+      to { background-color: #222; color: #0f0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Eksperimen Web Bro Elite</h1>
+  <p>Tekan tombol untuk melihat efek animasi dan suara</p>
+  <button onclick="play()">Klik Aku!</button>
+
+  <audio id="audio" preload="auto">
+    <source src="data:audio/wav;base64,UklGRhQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQgAAIA=" type="audio/wav" />
+    <!-- Ini hanya contoh base64 pendek. Ganti dengan efek lo sendiri -->
+  </audio>
+
+  <script>
+    function play() {
+      const audio = document.getElementById('audio');
+      const btn = document.querySelector('button');
+
+      btn.classList.add('effect');
+      audio.currentTime = 0;
+      audio.play();
+
+      setTimeout(() => btn.classList.remove('effect'), 200);
+    }
+  </script>
+</body>
+</html>
