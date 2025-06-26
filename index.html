@@ -58,12 +58,21 @@
 
   <script>
     function play() {
-      const audio = document.getElementById('audio');
-      const btn = document.querySelector('button');
+  const audio = document.getElementById('audio');
+  const btn = document.querySelector('button');
+  const body = document.body;
 
-      btn.classList.add('effect');
-      audio.currentTime = 0;
-      audio.play();
+  // Efek tombol + suara
+  btn.classList.add('effect');
+  audio.currentTime = 0;
+  audio.play();
+
+  // Ganti background secara acak
+  body.style.backgroundColor = getRandomColor();
+
+  // Hapus efek tombol
+  setTimeout(() => btn.classList.remove('effect'), 200);
+}
 
       setTimeout(() => btn.classList.remove('effect'), 200);
     }
