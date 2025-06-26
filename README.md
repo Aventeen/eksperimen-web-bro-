@@ -13,6 +13,7 @@ Proyek eksperimen web sederhana yang dibuat untuk tes efek tombol, suara, dan an
 3. Ubah kode sesuka hati lo
 
 ## 🌐 Live Demo
-[Klik di sini](https://username.github.io/nama-repo-lo) — Ganti dengan link asli GitHub Pages lo
+[Klik di sini](https://aventeen.github.io/eksperimen-web-bro)
+
 
 ## 📁 Struktur
