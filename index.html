@@ -2,8 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Eksperimen Web Bro Elite</title>
+  <title>Eksperimen Bro Elite</title>
   <style>
     body {
       background: #111;
@@ -12,7 +11,6 @@
       text-align: center;
       padding: 50px;
     }
-
     button {
       font-size: 24px;
       padding: 15px 30px;
@@ -23,61 +21,43 @@
       cursor: pointer;
       transition: transform 0.1s;
     }
-
     button:active {
       transform: scale(0.95);
     }
-
     @keyframes blink {
       from { background-color: #0f0; color: #111; }
-      to { background-color: #222; color: #0f0; }
+      to   { background-color: #222; color: #0f0; }
     }
-  </style> .effect {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px lime;
-  transition: all 0.2s ease-in-out;
-  animation: blink 0.2s;
-
-}
-
+    .effect {
+      transform: scale(1.1);
+      box-shadow: 0 0 20px lime;
+      transition: all 0.2s ease-in-out;
+      animation: blink 0.2s;
+    }
+  </style>
+</head>
 <body>
   <h1>🧪 Eksperimen Web Bro Elite</h1>
   <p>Tekan tombol untuk melihat efek animasi dan suara</p>
-  
 
-  <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png" 
-         alt="Logo Google Utama" 
-         style="max-width: 100%; height: auto; border: 2px solid #333; margin-bottom: 20px;">
+  <button id="klik">Klik Aku!</button>
 
-
-  <button onclick="play()">Klik Aku!</button>
-
-  <audio id="audio" preload="auto">
-    <source src="data:audio/wav;base64,UklGRhQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQgAAIA=" type="audio/wav" />
-    <!-- Ini hanya contoh base64 pendek. Ganti dengan efek lo sendiri -->
+  <audio id="sfx">
+    <source src="data:audio/mp3;base64,//uQxAAADhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFh..." type="audio/mp3">
   </audio>
 
-
   <script>
-    function play() {
-  const audio = document.getElementById('audio');
-  const btn = document.querySelector('button');
-  const body = document.body;
+    const tombol = document.getElementById('klik');
+    const audio = document.getElementById('sfx');
 
-  // Efek tombol + suara
-  btn.classList.add('effect');
-  audio.currentTime = 0;
-  audio.play();
-
-  // Ganti background secara acak
-  body.style.backgroundColor = getRandomColor();
-
-  // Hapus efek tombol
-  setTimeout(() => btn.classList.remove('effect'), 200);
-}
-
-      setTimeout(() => btn.classList.remove('effect'), 200);
-    }
+    tombol.addEventListener('click', () => {
+      tombol.classList.add('effect');
+      audio.currentTime = 0;
+      audio.play();
+      setTimeout(() => {
+        tombol.classList.remove('effect');
+      }, 200);
+    });
   </script>
 </body>
 </html>
