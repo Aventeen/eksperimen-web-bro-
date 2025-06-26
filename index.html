@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Eksperimen Bro Elite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eksperimen Web Bro Elite</title>
   <style>
     body {
       background: #111;
@@ -42,20 +43,24 @@
 
   <button id="klik">Klik Aku!</button>
 
+  <!-- Audio suara klik base64 (WAV, ~1KB) -->
   <audio id="sfx">
-    <source src="data:audio/mp3;base64,//uQxAAADhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFh..." type="audio/mp3">
+    <source src="data:audio/wav;base64,UklGRlgAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=" type="audio/wav" />
   </audio>
 
   <script>
-    const tombol = document.getElementById('klik');
-    const audio = document.getElementById('sfx');
+    const btn = document.getElementById("klik");
+    const sfx = document.getElementById("sfx");
 
-    tombol.addEventListener('click', () => {
-      tombol.classList.add('effect');
-      audio.currentTime = 0;
-      audio.play();
+    btn.addEventListener("click", () => {
+      // Tambahkan efek animasi
+      btn.classList.add("effect");
+      // Mainkan suara klik
+      sfx.currentTime = 0;
+      sfx.play();
+      // Hapus efek biar bisa klik lagi
       setTimeout(() => {
-        tombol.classList.remove('effect');
+        btn.classList.remove("effect");
       }, 200);
     });
   </script>
