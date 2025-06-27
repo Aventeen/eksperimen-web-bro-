@@ -1,85 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Eksperimen Web Bro Elite</title>
   <style>
     body {
       background: #111;
-      color: #0f0;
+      color: lime;
       font-family: monospace;
       text-align: center;
-      padding: 50px;
+      padding-top: 100px;
     }
     button {
-      font-size: 24px;
-      padding: 15px 30px;
-      background: #222;
-      color: #0f0;
-      border: 2px solid #0f0;
+      font-size: 2rem;
+      padding: 20px 40px;
+      border: 2px solid lime;
+      background: transparent;
+      color: lime;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+      transition: transform 0.2s ease;
     }
     button:active {
-      transform: scale(0.95);
+      transform: scale(0.9);
     }
-    .effect {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px lime;
+    .flash {
+      animation: flash 0.2s ease;
     }
-    #klik.effect {
-      transform: scale(0.95);
-      box-shadow: 0 0 5px rgba(0,0,0,0.3) inset;
-    }
-    #klik:not(.effect) {
-      transform: scale(1);
-      box-shadow: none;
+    @keyframes flash {
+      0% { background: lime; color: black; }
+      100% { background: transparent; color: lime; }
     }
   </style>
 </head>
 <body>
-  <h1>🧪 Eksperimen Web Bro Elite</h1>
-  <p>Tekan tombol untuk melihat efek animasi dan suara</p>
-
+  <h1>🧪 Eksperimen Web<br>Bro Elite</h1>
+  <p>Tekan tombol untuk melihat efek<br>animasi dan suara</p>
   <button id="klik">Klik Aku!</button>
 
-  <audio id="sfx">
-    <source src="click.mp3" type="audio/mpeg">
-  </audio>
+  <audio id="suara" src="sounds/click.mp3"></audio>
 
   <script>
-    const btn = document.getElementById("klik");
-    const sfx = document.getElementById("sfx");
+    const tombol = document.getElementById('klik');
+    const suara = document.getElementById('suara');
 
-    btn.addEventListener("click", () => {
-      btn.classList.add("effect");
-      sfx.currentTime = 0;
-      sfx.play();
-      setTimeout(() => {
-        btn.classList.remove("effect");
-      }, 200);
-    });
-
-    // Fungsi tambahan dummy biar gak error
-    function initParticles(num) {
-      console.log("initParticles called with:", num);
-    }
-
-    function animateParticles() {
-      console.log("animateParticles called");
-    }
-
-    // Opsional kalau ada tombol mode
-    // const modeToggleBtn = document.getElementById("modeToggleBtn");
-    // modeToggleBtn.addEventListener('click', () => {
-    //   initParticles(100);
-    //   animateParticles();
-    // });
-
-    window.addEventListener('resize', () => {
-      initParticles(100);
+    tombol.addEventListener('click', () => {
+      suara.currentTime = 0;
+      suara.play();
+      tombol.classList.add('flash');
+      setTimeout(() => tombol.classList.remove('flash'), 200);
     });
   </script>
 </body>
