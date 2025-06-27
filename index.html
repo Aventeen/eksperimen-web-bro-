@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Eksperimen Web Bro Elite</title>
+  <title>Web Bro Elite - Klik Suara</title>
   <style>
     body {
       background: #111;
@@ -19,37 +19,31 @@
       color: lime;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.2s ease;
     }
     button:active {
-      transform: scale(0.9);
-    }
-    .flash {
-      animation: flash 0.2s ease;
-    }
-    @keyframes flash {
-      0% { background: lime; color: black; }
-      100% { background: transparent; color: lime; }
+      transform: scale(0.95);
     }
   </style>
 </head>
 <body>
-  <h1>🧪 Eksperimen Web<br>Bro Elite</h1>
-  <p>Tekan tombol untuk melihat efek<br>animasi dan suara</p>
-  <button id="klik">Klik Aku!</button>
 
-  <audio id="suara" src="sounds/sounds_click.mp3"></audio>
+  <h1>🧪 Bro Elite Klik Test</h1>
+  <p>Klik tombol untuk dengar suara!</p>
+
+  <button onclick="playClick()">Klik Aku!</button>
+
+  <audio id="sfx" src="sounds/sounds_click.mp3"></audio>
 
   <script>
-    const tombol = document.getElementById('klik');
-    const suara = document.getElementById('suara');
-
-    tombol.addEventListener('click', () => {
-      suara.currentTime = 0;
-      suara.play();
-      tombol.classList.add('flash');
-      setTimeout(() => tombol.classList.remove('flash'), 200);
-    });
+    function playClick() {
+      const audio = document.getElementById("sfx");
+      audio.currentTime = 0;
+      audio.play().catch(err => {
+        alert("Suara gagal diputar. Coba klik lagi.");
+        console.error(err);
+      });
+    }
   </script>
+
 </body>
 </html>
