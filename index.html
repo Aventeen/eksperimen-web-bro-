@@ -82,7 +82,14 @@ c<!DOCTYPE html>
       setTimeout(() => {
         btn.classList.remove("effect");
       }, 200);
-    });
+      modeToggleBtn.addEventListener('click', () => {
+      initParticles(100); // Re-initialize to update colors
+      animateParticles(); // Restart animation
+       });
+       window.addEventListener('resize', () => {
+      initParticles(100); // Re-initialize on resize
+       });
+      
   </script>
 </body>
 </html>
