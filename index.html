@@ -30,21 +30,20 @@
   <h1>🧪 Bro Elite Klik Test</h1>
   <p>Klik tombol untuk dengar suara!</p>
 
-  <button id="klik">Klik Aku!</button>
+  <button onclick="playClick()">Klik Aku!</button>
 
-  <audio id="sfx" src="sounds/sounds_click.mp3"></audio>
+  <!-- ✅ Path audio SUDAH DIBENERIN -->
+  <audio id="sfx" src="sounds/_click.mp3"></audio>
 
   <script>
-    const tombol = document.getElementById("klik");
-    const audio = document.getElementById("sfx");
-
-    tombol.addEventListener("click", () => {
+    function playClick() {
+      const audio = document.getElementById("sfx");
       audio.currentTime = 0;
       audio.play().catch(err => {
         alert("Suara gagal diputar. Coba klik lagi.");
         console.error(err);
       });
-    });
+    }
   </script>
 
 </body>
