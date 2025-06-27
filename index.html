@@ -19,9 +19,32 @@
       color: lime;
       border-radius: 10px;
       cursor: pointer;
+      /* Transisi halus untuk semua properti */
+      transition: all 0.3s ease-in-out;
+      /* Efek cahaya awal yang berkedip */
+      box-shadow: 0 0 10px lime, 0 0 20px lime;
+      animation: pulse-glow 2s infinite alternate; /* Animasi berulang */
+    }
+    button:hover {
+      /* Efek cahaya lebih kuat saat hover */
+      box-shadow: 0 0 30px lime, 0 0 60px lime, 0 0 90px lime;
+      border-color: #00ff00; /* Warna border sedikit lebih terang */
+      transform: translateY(-5px) scale(1.02); /* Sedikit naik dan membesar saat di-hover */
     }
     button:active {
-      transform: scale(0.95);
+      transform: scale(0.95); /* Yang sudah ada, efek ditekan */
+      box-shadow: 0 0 5px lime; /* Bayangan sedikit redup saat di-klik */
+      animation: none; /* Hentikan animasi pulse saat diklik */
+    }
+
+    /* Keyframes untuk animasi cahaya berkedip */
+    @keyframes pulse-glow {
+      from {
+        box-shadow: 0 0 10px lime, 0 0 20px lime;
+      }
+      to {
+        box-shadow: 0 0 20px lime, 0 0 40px lime, 0 0 60px lime;
+      }
     }
   </style>
 </head>
@@ -32,8 +55,7 @@
 
   <button onclick="playClick()">Klik Aku!</button>
 
-  <!-- ✅ Ini path audio yang benar -->
-  <audio id="sfx" src="sounds/-click.mp3"></audio>
+  <audio id="sfx" src="sounds/sounds/-click.mp3"></audio> 
 
   <script>
     function playClick() {
