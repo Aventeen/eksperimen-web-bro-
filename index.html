@@ -1,4 +1,4 @@
-c<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -20,40 +20,24 @@ c<!DOCTYPE html>
       border: 2px solid #0f0;
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 0.1s;
+      transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
     }
     button:active {
       transform: scale(0.95);
     }
-    @keyframes blink {
-      from { background-color: #0f0; color: #111; }
-      to   { background-color: #222; color: #0f0; }
-    }
     .effect {
       transform: scale(1.1);
       box-shadow: 0 0 20px lime;
-      transition: all 0.2s ease-in-out;
-      <style>
-    /* ... kode CSS kamu yang lain (termasuk transition: all 0.2s ease-in-out;) ... */
-
-    /* Ini untuk efek animasi tombol saat ditekan */
-    #klik.effect { /* Selectornya #klik karena buttonmu id-nya "klik" */
-        transform: scale(0.95); /* Tombol sedikit mengecil */
-        box-shadow: 0 0 5px rgba(0,0,0,0.3) inset; /* Efek bayangan ke dalam */
     }
-
-    /* Ini biar baliknya halus setelah dilepas */
-    #klik { /* Selector untuk tombolmu */
-        transition: transform 0.1s ease-out, box-shadow 0.1s ease-out;
+    #klik.effect {
+      transform: scale(0.95);
+      box-shadow: 0 0 5px rgba(0,0,0,0.3) inset;
     }
-
-    /* Ini untuk memastikan state awal saat tombol tidak ditekan */
     #klik:not(.effect) {
-         transform: scale(1);
-         box-shadow: none;
+      transform: scale(1);
+      box-shadow: none;
     }
-</style>
-
+  </style>
 </head>
 <body>
   <h1>🧪 Eksperimen Web Bro Elite</h1>
@@ -61,11 +45,8 @@ c<!DOCTYPE html>
 
   <button id="klik">Klik Aku!</button>
 
-  <!-- Audio suara klik base64 (WAV, ~1KB) -->
   <audio id="sfx">
-    <source src=<audio id="sfx">
-    <source src="sounds/click.mp3" type="audio/mpeg"> </audio>
-
+    <source src="click.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -73,23 +54,33 @@ c<!DOCTYPE html>
     const sfx = document.getElementById("sfx");
 
     btn.addEventListener("click", () => {
-      // Tambahkan efek animasi
       btn.classList.add("effect");
-      // Mainkan suara klik
       sfx.currentTime = 0;
       sfx.play();
-      // Hapus efek biar bisa klik lagi
       setTimeout(() => {
         btn.classList.remove("effect");
       }, 200);
-      modeToggleBtn.addEventListener('click', () => {
-      initParticles(100); // Re-initialize to update colors
-      animateParticles(); // Restart animation
-       });
-       window.addEventListener('resize', () => {
-      initParticles(100); // Re-initialize on resize
-       });
-      
+    });
+
+    // Fungsi tambahan dummy biar gak error
+    function initParticles(num) {
+      console.log("initParticles called with:", num);
+    }
+
+    function animateParticles() {
+      console.log("animateParticles called");
+    }
+
+    // Opsional kalau ada tombol mode
+    // const modeToggleBtn = document.getElementById("modeToggleBtn");
+    // modeToggleBtn.addEventListener('click', () => {
+    //   initParticles(100);
+    //   animateParticles();
+    // });
+
+    window.addEventListener('resize', () => {
+      initParticles(100);
+    });
   </script>
 </body>
 </html>
