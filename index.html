@@ -2,73 +2,67 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Web Bro Elite - Klik Suara</title>
+  <title>Bro Elite Klik Test</title>
   <style>
     body {
-      background: #111;
-      color: lime;
+      background-color: #111;
+      color: #0f0;
       font-family: monospace;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 50px;
     }
-    button {
-      font-size: 2rem;
-      padding: 20px 40px;
-      border: 2px solid lime;
-      background: transparent;
-      color: lime;
-      border-radius: 10px;
+    .title {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    .desc {
+      font-size: 1em;
+      color: #8f8;
+      margin-bottom: 40px;
+    }
+    .button {
+      padding: 14px 32px;
+      font-size: 18px;
+      background-color: #2f2;
+      border: none;
+      border-radius: 12px;
+      color: #000;
       cursor: pointer;
-      /* Transisi halus untuk semua properti */
-      transition: all 0.3s ease-in-out;
-      /* Efek cahaya awal yang berkedip */
-      box-shadow: 0 0 10px lime, 0 0 20px lime;
-      animation: pulse-glow 2s infinite alternate; /* Animasi berulang */
+      transition: background 0.3s ease;
     }
-    button:hover {
-      /* Efek cahaya lebih kuat saat hover */
-      box-shadow: 0 0 30px lime, 0 0 60px lime, 0 0 90px lime;
-      border-color: #00ff00; /* Warna border sedikit lebih terang */
-      transform: translateY(-5px) scale(1.02); /* Sedikit naik dan membesar saat di-hover */
+    .button:hover {
+      background-color: #4f4;
     }
-    button:active {
-      transform: scale(0.95); /* Yang sudah ada, efek ditekan */
-      box-shadow: 0 0 5px lime; /* Bayangan sedikit redup saat di-klik */
-      animation: none; /* Hentikan animasi pulse saat diklik */
-    }
-
-    /* Keyframes untuk animasi cahaya berkedip */
-    @keyframes pulse-glow {
-      from {
-        box-shadow: 0 0 10px lime, 0 0 20px lime;
-      }
-      to {
-        box-shadow: 0 0 20px lime, 0 0 40px lime, 0 0 60px lime;
-      }
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
+  <div class="title">🖋️ Bro Elite Klik Test</div>
+  <div class="desc">Klik tombol untuk play/pause SoundHelix 🎵</div>
 
-  <h1>🧪 Bro Elite Klik Test</h1>
-  <p>Klik tombol untuk dengar suara!</p>
+  <button class="button" id="toggleButton" onclick="toggleAudio()">▶️ Putar Lagu</button>
 
-  <h1>🎵 SoundHelix Player</h1>
-  <audio controls autoplay>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-    Browser kamu tidak mendukung pemutar audio.
-</audio> 
+  <audio id="audio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
 
   <script>
-    function playClick() {
-      const audio = document.getElementById("sfx");
-      audio.currentTime = 0;
-      audio.play().catch(err => {
-        alert("Suara gagal diputar. Coba klik lagi.");
-        console.error(err);
-      });
+    const audio = document.getElementById("audio");
+    const button = document.getElementById("toggleButton");
+
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play();
+        button.textContent = "⏹️ Stop Lagu";
+        button.style.backgroundColor = "#f22";
+        button.style.color = "#fff";
+      } else {
+        audio.pause();
+        button.textContent = "▶️ Putar Lagu";
+        button.style.backgroundColor = "#2f2";
+        button.style.color = "#000";
+      }
     }
   </script>
-
 </body>
 </html>
